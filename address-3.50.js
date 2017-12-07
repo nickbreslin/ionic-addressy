@@ -2467,11 +2467,14 @@
         if (typeof reference == "string") {
             base = pca.getElement(base) || document;
 
-            var byId = base.getElementById ? base.getElementById(reference) : null;
-            if (byId) return byId;
+            // -- Disabled for now. byName is the desired method of matching.
+            // var byId = base.getElementById ? base.getElementById(reference) : null;
+            // if (byId) return byId;
 
             var byName = base.getElementsByName ? base.getElementsByName(reference) : null;
-            if (byName.length) return byName[0];
+            
+            // Modified to return [1] instead of [0], because [0] is the <ion-button> wrapper.
+            if (byName.length) return byName[1];
         }
 
         //try a regex match if allowed
